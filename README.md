@@ -34,53 +34,17 @@ On activation the plugin also sends an initial feed command: `~F<feed>\n`.
 
 ## Repository layout
 
+
 hardwarebot/
 ├── CMakeLists.txt
+├── config
+├── description
+├── hardware
+├── launch
+├── meshes
+├── moveit
 ├── package.xml
-├── config/
-│ ├── gaz_ros2_ctl_use_sim.yaml
-│ ├── gripperbot.rviz
-│ ├── gz_bridge.yaml
-│ └── trajectory_controller.yaml
-├── description/
-│ ├── beams.xacro
-│ ├── robot_core.xacro
-│ ├── robot.srdf
-│ ├── robot.urdf.xacro
-│ └── ros2_control.xacro
-├── hardware/
-│ ├── hardwarebot_system.cpp
-│ ├── hardwarebot_system.hpp
-│ └── hardwarebot_system_plugin.xml
-├── launch/
-│ ├── bringup_real.launch.py
-│ ├── moveit.launch.py
-│ ├── rsp.launch.py
-│ └── sim.launch.py
-├── meshes/
-│ ├── base_link.stl
-│ ├── Component10_1.stl
-│ ├── Component1_1.stl
-│ ├── Component3_1.stl
-│ ├── Component5_1.stl
-│ ├── Component8_1.stl
-│ └── Component9_1.stl
-├── moveit/
-│ ├── chomp_planning.yaml
-│ ├── joint_limits.yaml
-│ ├── kinematics.yaml
-│ ├── lerp_planning.yaml
-│ ├── moveit_controllers.yaml
-│ ├── moveit_planning.yaml
-│ ├── ompl_planning.yaml
-│ ├── pilz_cartesian_limits.yaml
-│ ├── pilz_industrial_motion_planner_planning.yaml
-│ ├── sensors_3d.yaml
-│ └── trajopt_planning.yaml
-└── worlds/
-├── built.world
-├── minimal.world
-└── one_less_box.world
+└── worlds
 ---
 
 ## Requirements
