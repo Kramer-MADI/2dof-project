@@ -84,7 +84,6 @@ Listening on 0.0.0.0:9000 …
 
 mkdir -p ~/serial
 socat -d -d pty,raw,echo=0,link=$HOME/serial/ttyARD tcp:127.0.0.1:9000
-# Keep this terminal open
 
 ---
 
