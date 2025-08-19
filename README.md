@@ -36,14 +36,23 @@ On activation the plugin also sends an initial feed command: `~F<feed>\n`.
 
 
 hardwarebot
+
 ├── CMakeLists.txt
+
 ├── config
+
 ├── description
+
 ├── hardware
+
 ├── launch
+
 ├── meshes
+
 ├── moveit
+
 ├── package.xml
+
 └── worlds
 ---
 
