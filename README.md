@@ -35,7 +35,7 @@ On activation the plugin also sends an initial feed command: `~F<feed>\n`.
 ## Repository layout
 
 
-hardwarebot
+hardwarebot/
 
 ├── CMakeLists.txt
 
