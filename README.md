@@ -81,7 +81,6 @@ hardwarebot/
 ├── built.world
 ├── minimal.world
 └── one_less_box.world
-
 ---
 
 ## Requirements
