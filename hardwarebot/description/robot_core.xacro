@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Includes -->
+  <!-- <xacro:include filename="inertial_macros.xacro"/> -->
+  <!-- <xacro:include filename="beams.xacro"/> -->
+
+  <!-- Materials -->
+  <material name="silver">
+    <color rgba="0.700 0.700 0.700 1.0"/>
+  </material>
+
+  <!-- World and Base Reference -->
+
+  <link name="universe">
+
+  <!-- Probably edit world joint origin to move gripper start position arround-->
+  
+  <joint name="world_joint" type="fixed">
+    <parent link="universe"/>
+    <child link="world"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="world"/>
+
+  </link>
+
+  <!--
+  <joint name="base_link_joint" type="fixed">
+    <parent link="box_link"/>
+    <child link="base_link"/>
+    <origin xyz="0 -0.037 0.1" rpy="0 0 0"/>
+  </joint>
+  -->
+
+  <joint name="base_link_joint" type="fixed">
+    <parent link="universe"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Link Definitions -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.009225713675084443 0.0009395326248671956 0.16883786815064228" rpy="0 0 0"/>
+      <mass value="4.129738615288243"/>
+      <inertia ixx="0.004869" ixy="0" ixz="0" iyy="0.006843" iyz="0" izz="0.006671"/>
+    </inertial>
+  </link>
+
+  <link name="Component5_1">
+    <visual>
+      <origin xyz="0.011816 -0.035888 -0.012432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component5_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.011816 -0.035888 -0.012432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component5_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.8632491516460135e-07 -4.6737513356405816e-07 -0.04667345672442119" rpy="0 0 0"/>
+      <mass value="2.3769738551034174"/>
+      <inertia ixx="0.002572" ixy="0.000177" ixz="0" iyy="0.002954" iyz="0" izz="0.002679"/>
+    </inertial>
+  </link>
+
+  <link name="Component1_1">
+    <visual>
+      <origin xyz="-0.048184 -0.035888 -0.137432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.048184 -0.035888 -0.137432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component1_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.06000028632491587 -4.6737513197765354e-07 -0.007836367251077725" rpy="0 0 0"/>
+      <mass value="2.3311118820767818"/>
+      <inertia ixx="0.002538" ixy="0" ixz="0" iyy="0.004372" iyz="0" izz="0.005986"/>
+    </inertial>
+  </link>
+
+  <link name="Component3_1">
+    <visual>
+      <origin xyz="0.011816 -0.093388 -0.145432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component3_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.011816 -0.093388 -0.145432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component3_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.8632491584634767e-07 -0.007500467375131714 0.014999759238118415" rpy="0 0 0"/>
+      <mass value="0.3179250000000001"/>
+      <inertia ixx="3e-05" ixy="0" ixz="0" iyy="0.000238" iyz="0" izz="0.000221"/>
+    </inertial>
+  </link>
+
+  <link name="Component9_1">
+    <visual>
+      <origin xyz="0.011816 0.021612 -0.145432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component9_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.011816 0.021612 -0.145432" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component9_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-2.8632491608053534e-07 0.0074995326248675845 0.014999759238119414" rpy="0 0 0"/>
+      <mass value="0.317924999999999"/>
+      <inertia ixx="3e-05" ixy="0" ixz="0" iyy="0.000238" iyz="0" izz="0.000221"/>
+    </inertial>
+  </link>
+
+  <link name="Component10_1">
+    <visual>
+      <origin xyz="0.009964 0.00974 0.030135" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component10_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.009964 0.00974 0.030135" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component10_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.006984004938344654 0.002734264130490712 -0.015000240761882375" rpy="0 0 0"/>
+      <mass value="0.3179249999999978"/>
+      <inertia ixx="0.000211" ixy="-7.1e-05" ixz="0" iyy="5.8e-05" iyz="0" izz="0.000221"/>
+    </inertial>
+  </link>
+
+  <link name="Component8_1">
+    <visual>
+      <origin xyz="0.066074 -0.054923 0.062568" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component8_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.066074 -0.054923 0.062568" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file://$(find gripperbot)/meshes/Component8_1.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.006983432288514446 -0.0027341988807576927 -0.015000240761882014" rpy="0 0 0"/>
+      <mass value="0.3179249999999989"/>
+      <inertia ixx="0.000211" ixy="-7.1e-05" ixz="0" iyy="5.8e-05" iyz="0" izz="0.000221"/>
+    </inertial>
+  </link>
+
+  <!-- Joint Definitions -->
+  <joint name="Revolute22" type="continuous">
+    <origin xyz="-0.011816 0.035888 0.012432" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Component5_1"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="100" velocity="1"/>
+  </joint>
+
+  <joint name="Revolute27" type="revolute">
+    <origin xyz="0.048184 0.035888 0.137432" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Component1_1"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-1.570796" upper="1.570796" effort="100" velocity="100"/>
+  </joint>
+
+  <joint name="Slider28" type="prismatic">
+    <origin xyz="-0.06 0.0575 0.008" rpy="0 0 0"/>
+    <parent link="Component1_1"/>
+    <child link="Component3_1"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.0425" upper="0" effort="100" velocity="100"/>
+  </joint>
+
+  <joint name="Slider29" type="prismatic">
+    <origin xyz="-0.06 -0.0575 0.008" rpy="0 0 0"/>
+    <parent link="Component1_1"/>
+    <child  link="Component9_1"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-0.0425" upper="0" effort="100" velocity="100"/>
+    <mimic joint="Slider28" multiplier="1.0" offset="0.0"/>
+  </joint>
+
+  <joint name="Slider30" type="prismatic">
+    <origin xyz="0.001852 -0.045628 -0.042567" rpy="0 0 0"/>
+    <parent link="Component5_1"/>
+    <child link="Component10_1"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.0425" upper="0" effort="100" velocity="100"/>
+  </joint>
+
+  <joint name="Slider31" type="prismatic">
+    <origin xyz="-0.054258 0.019035 -0.075" rpy="0 0 0"/>
+    <parent link="Component5_1"/>
+    <child  link="Component8_1"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-0.0425" upper="0" effort="100" velocity="100"/>
+    <mimic joint="Slider30" multiplier="1.0" offset="0.0"/>
+  </joint>
+</robot>

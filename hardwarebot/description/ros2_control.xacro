@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- sim_mode local so file works if caller doesn't pass it -->
+  <xacro:arg name="sim_mode" default="false"/>
+
+  <!-- Macro for joint interface blocks -->
+  <xacro:macro name="joint_interface" params="name min_pos max_pos min_vel max_vel init_pose">
+    <joint name="${name}">
+      <command_interface name="position">
+        <param name="min">${min_pos}</param>
+        <param name="max">${max_pos}</param>
+      </command_interface>
+      <command_interface name="velocity">
+        <param name="min">${min_vel}</param>
+        <param name="max">${max_vel}</param>
+      </command_interface>
+      <state_interface name="position">
+        <param name="initial_value">${init_pose}</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- hardware path  -->
+  <xacro:unless value="$(arg sim_mode)">
+    <ros2_control name="HardwarebotHW" type="system">
+      <hardware>
+        <!-- ros2_control plugin -->
+        <plugin>hardwarebot_hardware/HardwarebotSystem</plugin>
+
+        <!-- edit these as needed) -->
+        <param name="port">/home/gun/serial/ttyARD</param>
+        <param name="baud">115200</param>
+        <param name="cmd_prefix">~</param>
+        <param name="timeout_ms">100</param>
+
+        <!-- calibration defaults used by plugin -->
+        <param name="steps_per_rad">10</param>
+        <param name="steps_per_mm">50</param>
+        <param name="microsteps">16</param>
+        <param name="default_feed">2000</param>
+      </hardware>
+
+      <!-- joint interfaces -->
+      <xacro:joint_interface name="Revolute22" min_pos="-3.14159" max_pos="3.14159" min_vel="-1.0" max_vel="1.0"   init_pose="0.0"/>
+      <xacro:joint_interface name="Revolute27" min_pos="-1.570796" max_pos="1.570796" min_vel="-0.8"  max_vel="0.8" init_pose="0.0"/>
+      <xacro:joint_interface name="Slider28"   min_pos="-0.0425"   max_pos="0.0"     min_vel="-0.05" max_vel="0.05" init_pose="0.0"/>
+      <xacro:joint_interface name="Slider30"   min_pos="-0.0425"   max_pos="0.0"     min_vel="-0.05" max_vel="0.05" init_pose="0.0"/>
+    </ros2_control>
+  </xacro:unless>
+
+  <!-- simulation path -->
+  <xacro:if value="$(arg sim_mode)">
+    <ros2_control name="GazeboSystem" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        <param name="calculate_dynamics">true</param>
+        <param name="state_following_offset">0.0</param>
+        <param name="fake_sensor_commands">${fake_sensor_commands}</param>
+        <param name="state_publish_rate">100</param>
+      </hardware>
+
+      <xacro:joint_interface name="Revolute22" min_pos="-3.14159" max_pos="3.14159" min_vel="-1.0" max_vel="1.0"   init_pose="0.0"/>
+      <xacro:joint_interface name="Revolute27" min_pos="-1.570796" max_pos="1.570796" min_vel="-0.8"  max_vel="0.8" init_pose="0.0"/>
+      <xacro:joint_interface name="Slider28"   min_pos="-0.0425"   max_pos="0.0"     min_vel="-0.05" max_vel="0.05" init_pose="0.0"/>
+      <xacro:joint_interface name="Slider30"   min_pos="-0.0425"   max_pos="0.0"     min_vel="-0.05" max_vel="0.05" init_pose="0.0"/>
+    </ros2_control>
+
+    <gazebo>
+      <plugin name="gz_ros2_control::GazeboSimROS2ControlPlugin"
+              filename="libgz_ros2_control-system.so">
+        <parameters>$(find hardwarebot)/config/trajectory_controller.yaml</parameters>
+        <parameters>$(find hardwarebot)/config/gaz_ros2_ctl_use_sim.yaml</parameters>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
+</robot>

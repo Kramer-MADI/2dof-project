@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="robot">
+
+  <!-- bot_grip -->
+  <group name="bot_grip">
+    <link  name="base_link"/>
+    <link  name="Component5_1"/>
+    <joint name="Revolute22"/>
+    <joint name="Slider30"/>
+  </group>
+
+  <group_state name="bot0" group="bot_grip">
+    <joint name="Revolute22" value="0"/>
+    <joint name="Slider30"   value="0"/>
+  </group_state>
+
+  <disable_collisions link1="base_link"    link2="Component5_1" reason="Default"/>
+  <disable_collisions link1="Component5_1" link2="Component8_1" reason="Adjacent"/>
+  <disable_collisions link1="Component5_1" link2="Component10_1" reason="Adjacent"/>
+  <disable_collisions link1="Component8_1" link2="Component10_1" reason="Default"/>
+
+  <!-- top_grip -->
+  <group name="top_grip">
+    <link  name="base_link"/>
+    <link  name="Component1_1"/>
+    <joint name="Revolute27"/>
+    <joint name="Slider28"/>
+  </group>
+
+  <group_state name="top0" group="top_grip">
+    <joint name="Revolute27" value="0"/>
+    <joint name="Slider28"   value="0"/>
+  </group_state>
+
+  <disable_collisions link1="base_link"    link2="Component1_1" reason="Default"/>
+  <disable_collisions link1="Component1_1" link2="Component3_1" reason="Adjacent"/>
+  <disable_collisions link1="Component1_1" link2="Component9_1" reason="Adjacent"/>
+  <disable_collisions link1="Component3_1" link2="Component9_1" reason="Default"/>
+
+</robot>

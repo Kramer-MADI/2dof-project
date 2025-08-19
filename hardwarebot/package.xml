@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd"
+            schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hardwarebot</name>                
+
+  <version>0.0.0</version>
+  <description>Gazebo + hardware bring-up for the HardwareBot.</description>
+
+  <maintainer email="hardwarebot@stud.example">maintainer</maintainer>
+  <author      email="hardwarebot@stud.example">author</author>
+
+  <license>_</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- (existing run-time + build deps) -->
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>rclcpp</depend>
+  <depend>ros_gz_bridge</depend>
+  <depend>ros_gz_image</depend>
+  <depend>ros_gz_sim</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2</depend>
+
+  <!-- ros2_control hardware plugin -->
+  <build_depend>hardware_interface</build_depend>
+  <build_depend>pluginlib</build_depend>
+
+  <exec_depend>hardware_interface</exec_depend>
+  <exec_depend>pluginlib</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+  </export>
+</package>
+

@@ -1,0 +1,47 @@
+move_group:
+  ros__parameters:
+    planning_scene_monitor_options:
+      name: "planning_scene_monitor"
+      robot_description: "robot_description"
+      joint_state_topic: "/joint_states"
+      attached_collision_object_topic: "/move_group/attached_collision_object"
+      publish_planning_scene_topic: "/move_group/publish_planning_scene"
+      monitored_planning_scene_topic: "/move_group/monitored_planning_scene"
+      wait_for_initial_state_timeout: 10.0
+
+    # The key difference is in this structure
+    planning_pipelines:
+      pipeline_names: ["ompl"]
+      planning_pipeline_configs:
+        ompl:
+          planning_plugin: "ompl_interface/OMPLPlanner"
+          request_adapters: [
+            "default_planner_request_adapters/AddTimeOptimalParameterization",
+            "default_planner_request_adapters/ResolveConstraintFrames",
+            "default_planner_request_adapters/FixWorkspaceBounds",
+            "default_planner_request_adapters/FixStartStateBounds",
+            "default_planner_request_adapters/FixStartStateCollision",
+            "default_planner_request_adapters/FixStartStatePathConstraints"
+          ]
+          start_state_max_bounds_error: 0.1
+    
+    # This is critical - it tells MoveIt which pipeline to use
+    default_planning_pipeline: "ompl"
+    
+    # Plan execution parameters
+    plan_execution:
+      execution_type: topic
+      trajectory_execution_monitoring: true
+      trajectory_monitoring:
+        joint_states_topic: "/joint_states"
+        allowed_execution_duration_scaling: 1.5
+        allowed_goal_duration_margin: 0.5
+        error_on_trajectory_error: true
+
+    trajectory_execution:
+      allowed_start_tolerance: 0.01
+      allowed_execution_duration_scaling: 1.2
+      allowed_goal_duration_margin: 0.5
+      execution_duration_monitoring: true
+
+    moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager

@@ -1,0 +1,33 @@
+# This config file is used by ros2_control
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    bot_grip_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    top_grip_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+bot_grip_controller:
+  ros__parameters:
+    joints: [Revolute22, Slider30]
+    command_interfaces: [position]
+    state_interfaces: [position, velocity]
+    allow_partial_joints_goal: false
+    constraints:
+      goal_time: 0.5
+      stopped_velocity_tolerance: 0.01
+
+top_grip_controller:
+  ros__parameters:
+    joints: [Revolute27, Slider28]
+    command_interfaces: [position]
+    state_interfaces: [position, velocity]
+    allow_partial_joints_goal: false
+    constraints:
+      goal_time: 0.5
+      stopped_velocity_tolerance: 0.01

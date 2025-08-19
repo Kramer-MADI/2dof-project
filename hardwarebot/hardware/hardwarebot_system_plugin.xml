@@ -1,0 +1,8 @@
+<library path="hardwarebot_system">
+  <class
+    name="hardwarebot_hardware/HardwarebotSystem"
+    type="hardwarebot_hardware::HardwarebotSystem"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>Serial bridge to the Arduino-based hardware.</description>
+  </class>
+</library>
