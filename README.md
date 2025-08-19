@@ -37,25 +37,50 @@ On activation the plugin also sends an initial feed command: `~F<feed>\n`.
 hardwarebot/
 ├── CMakeLists.txt
 ├── package.xml
-├── launch/
-│ ├── bringup_real.launch.py # real‑hardware bring‑up (optional MoveIt/RViz)
-│ ├── rsp.launch.py # robot_state_publisher (URDF)
-│ └── moveit.launch.py # MoveIt + RViz config
-├── description/
-│ ├── robot.urdf.xacro # includes ros2_control.xacro and model
-│ ├── ros2_control.xacro # serial/steps/feed params + joint interfaces
-│ ├── robot.srdf # groups (bot_grip, top_grip) and collision disables
-│ ├── robot_core.xacro, beams.xacro # geometry/structure
-│ └── meshes/*.stl
 ├── config/
-│ ├── trajectory_controller.yaml # JointTrajectoryControllers (bot/top)
-│ └── *.rviz / *.yaml # auxiliary configs
+│ ├── gaz_ros2_ctl_use_sim.yaml
+│ ├── gripperbot.rviz
+│ ├── gz_bridge.yaml
+│ └── trajectory_controller.yaml
+├── description/
+│ ├── beams.xacro
+│ ├── robot_core.xacro
+│ ├── robot.srdf
+│ ├── robot.urdf.xacro
+│ └── ros2_control.xacro
+├── hardware/
+│ ├── hardwarebot_system.cpp
+│ ├── hardwarebot_system.hpp
+│ └── hardwarebot_system_plugin.xml
+├── launch/
+│ ├── bringup_real.launch.py
+│ ├── moveit.launch.py
+│ ├── rsp.launch.py
+│ └── sim.launch.py
+├── meshes/
+│ ├── base_link.stl
+│ ├── Component10_1.stl
+│ ├── Component1_1.stl
+│ ├── Component3_1.stl
+│ ├── Component5_1.stl
+│ ├── Component8_1.stl
+│ └── Component9_1.stl
 ├── moveit/
-│ ├── moveit_controllers.yaml # MoveIt→ROS controllers binding. moveit_controllers_yaml
-│ └── kinematics.yaml # KDL plugin settings per group. kinematics_yaml
-└── hardware/
-├── hardwarebot_system.hpp/.cpp # ros2_control hardware plugin
-└── hardwarebot_system_plugin.xml # pluginlib export
+│ ├── chomp_planning.yaml
+│ ├── joint_limits.yaml
+│ ├── kinematics.yaml
+│ ├── lerp_planning.yaml
+│ ├── moveit_controllers.yaml
+│ ├── moveit_planning.yaml
+│ ├── ompl_planning.yaml
+│ ├── pilz_cartesian_limits.yaml
+│ ├── pilz_industrial_motion_planner_planning.yaml
+│ ├── sensors_3d.yaml
+│ └── trajopt_planning.yaml
+└── worlds/
+├── built.world
+├── minimal.world
+└── one_less_box.world
 
 ---
 
